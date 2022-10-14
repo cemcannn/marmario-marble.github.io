@@ -29,7 +29,7 @@ var $grid = $(".grid").isotope({
 
 function myMap() {
     var mapProp = {
-        center: new google.maps.LatLng(39.9315, 32.6289),
+        center: new google.maps.LatLng(39.9227, 32.8115),
         zoom: 18,
     };
     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
