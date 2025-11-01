@@ -86,24 +86,16 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-          <form class="form-contact" data-netlify="true" name="contact">
-              <div>
-                <input type="text" name="name" placeholder="Your Name" />
-              </div>
-              <div>
-                <input type="text" name="phone" placeholder="Phone Number" />
-              </div>
-              <div>
-                <input type="email" name="email" placeholder="Email" />
-              </div>
-              <div>
-                <input type="text" name="message" class="message-box" placeholder="Message" />
-              </div>
-              <div class="btn_box">
-                <button>
-                  SEND
-                </button>
-              </div>
+            <form name="contact" netlify>
+              <p>
+                <label>Name <input type="text" name="name" /></label>
+              </p>
+              <p>
+                <label>Email <input type="email" name="email" /></label>
+              </p>
+              <p>
+                <button type="submit">Send</button>
+              </p>
             </form>
           </div>
         </div>
