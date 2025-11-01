@@ -141,6 +141,55 @@ a:focus {
   letter-spacing: 1.2px;
 }
 
+/* language switcher */
+.language-switcher {
+  display: inline-block;
+  margin-left: 12px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.language-switcher a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0 6px;
+}
+.language-switcher span {
+  color: #ffffff;
+}
+.language-switcher a.active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Responsive placement for language switcher */
+@media (max-width: 991.98px) {
+  /* place the switcher near the top-right but left of the toggler */
+  .language-switcher {
+    position: absolute;
+    right: 70px; /* leave room for the hamburger */
+    top: 10px;
+    margin-left: 0;
+  }
+
+  /* ensure the navbar toggler stays visible on the far right */
+  .custom_nav-container .navbar-toggler {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+  }
+
+  /* slightly reduce font-size on small screens */
+  .language-switcher { font-size: 13px; }
+}
+
+@media (max-width: 575.98px) {
+  /* on very small screens stack inside header area to avoid overlap */
+  .language-switcher {
+    right: 48px; /* a bit closer to center so toggler still fits */
+    top: 8px;
+  }
+}
+
 .custom_nav-container {
   z-index: 99999;
   padding: 5px 0;

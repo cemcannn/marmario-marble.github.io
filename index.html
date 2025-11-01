@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Marmario — Redirecting...</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <script>
+    (function () {
+      // Utility to read query string
+      function getQueryParam(name) {
+        var m = location.search.match(new RegExp('(?:[?&])' + name + '=([^&]+)'));
+        return m ? decodeURIComponent(m[1]) : null;
+      }
+
+      // If user explicitly requests a language via ?lang=tr or ?lang=en, honor it and save preference
+      var forced = (getQueryParam('lang') || '').toLowerCase();
+      if (forced === 'tr' || forced === 'en') {
+        document.cookie = 'marmario_lang=' + forced + ';path=/;max-age=' + 60 * 60 * 24 * 365 + ';SameSite=Lax';
+        location.replace(forced === 'tr' ? '/tr/index.html' : '/en/index.html');
+        return;
+      }
+
+      // If a language cookie is present, use it
+      var cookieMatch = document.cookie.match(/(?:^|; )marmario_lang=([^;]+)/);
+      if (cookieMatch) {
+        var cookieLang = cookieMatch[1];
+        if (cookieLang === 'tr' || cookieLang === 'en') {
+          location.replace(cookieLang === 'tr' ? '/tr/index.html' : '/en/index.html');
+          return;
+        }
+      }
+
+      // Detect browser language
+      var nav = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || 'en';
+      var code = nav.toLowerCase();
+
+      // Simple check for Turkish; otherwise default to English
+      var isTR = code.indexOf('tr') === 0 || code.indexOf('-tr') !== -1 || code.indexOf('tr-') === 0 || code === 'tr';
+      // fallback: also treat any code that contains 'tr' as Turkish (covers variants)
+      if (!isTR && code.indexOf('tr') !== -1) isTR = true;
+
+      location.replace(isTR ? '/tr/index.html' : '/en/index.html');
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting you to the best language version of the site based on your browser settings.</p>
+  <p>If you are not redirected automatically, choose a language:</p>
+  <ul>
+    <li><a href="/tr/index.html?lang=tr">Türkçe (TR)</a></li>
+    <li><a href="/en/index.html?lang=en">English (EN)</a></li>
+  </ul>
+  <noscript>
+    <p>JavaScript is disabled in your browser. Use the links above to go to the language you prefer.</p>
+  </noscript>
+</body>
+</html>
